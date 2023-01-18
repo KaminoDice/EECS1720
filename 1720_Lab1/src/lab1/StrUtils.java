@@ -26,8 +26,9 @@ public class StrUtils {
 	 * @return the string equal to COURSE_NAME (located in N
 	 */
 	public static String getCourseName() {
-		
-		return "";
+		String cName = lab1.StrUtils.COURSE_NAME;
+		//String cName = "Building Interactive Systems";
+		return cName;
 	}
 
 	/**

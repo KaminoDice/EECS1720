@@ -24,7 +24,7 @@ public class LogicUtils {
 	 */
 	public static boolean isOdd(int x) {
 		
-		return true;
+		return !(x%2 == 0);
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class LogicUtils {
 	 */
 	public static boolean isOnUnitCircle(double x, double y) {
 		
-		return true;
+		return Math.pow(x, 2)+Math.pow(y, 2) == 1;
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class LogicUtils {
 	public static boolean isInsideUnitSquare(double x, double y) {
 		
 		
-		return true;
+		return (x<=1 && x>=0)&&(y<=1 && y>=0);
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class LogicUtils {
 	public static boolean isOutsideUnitSquare(double x, double y) {
 		
 		
-		return true;
+		return !((x<=1 && x>=0)&&(y<=1 && y>=0));
 	}
 
 	
@@ -101,15 +101,18 @@ public class LogicUtils {
 	 *         otherwise
 	 */
 	public static int contains(double x, Range range) {
-		
+		int result;
 		// HINT: look at the Range class (java file or API documentation link), 
 		// 		 to see how to access/use a Range object (or type "range." and this
 		//		 will pull up a dropdown menu of all the legal features that can
 		//       be used/called from a Range object reference
+		if (x > range.getMinimum() && x < range.getMaximum()) {
+			result = 1;
+		}else {
+			result = 0;
+		}
 		
-	
-		
-		return 0;
+		return result ;
 	}
 
 	/**
@@ -124,9 +127,17 @@ public class LogicUtils {
 	 *         narrower than r2; and 1 if r1 is wider than r2
 	 */
 	public static int compareTo(Range r1, Range r2) {
-		
-		
-		return 0;
+		double width1 = r1.getMaximum() - r1.getMinimum();
+		double width2 = r2.getMaximum() - r2.getMinimum();
+		int result;
+		if(width1 == width2) {
+			result = 0;
+		}else if(width1 > width2) {
+			result = 1;
+		}else {
+			result = -1;
+		}
+		return result;
 	}
 
 }

@@ -79,7 +79,7 @@ public class NumUtils {
 		//		   in the Integer class)
 		//
 		
-		return 0;
+		return Integer.MAX_VALUE;
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class NumUtils {
 		
 		
 		
-		return 0.0;
+		return Double.MIN_VALUE;
 	}
 	/**
 	 * Returns the largest number of Canadian quarters (each worth 25 cents) whose
@@ -108,7 +108,7 @@ public class NumUtils {
 	public static int numQuarters(int cents) {
 		
 		
-		return 0;
+		return cents/25;
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class NumUtils {
 	public static int wrapAngle(int degrees) {
 		
 		
-		return 0;
+		return degrees%360;
 	}
 	
 	
@@ -156,9 +156,9 @@ public class NumUtils {
 	 * @return the average of the two values
 	 */
 	public static double avg(int a, int b) {
+		double sum = (double)a + (double)b;
 		
-		
-		return 0.0;
+		return sum/2.0;
 	}
 
 	/**
@@ -182,9 +182,9 @@ public class NumUtils {
 	 *      Environment and Climate Change Canada wind chill definition</a>
 	 */
 	public static double windChill(double airTemp, double windSpeed) {
-
-		
-		return 0.0;
+		double vWind= Math.pow(windSpeed, 0.16);
+		double wChill = 13.12 + 0.6215 * airTemp - 11.37 * vWind + 0.3965 * vWind * airTemp ;
+		return wChill;
 	}
 
 	
