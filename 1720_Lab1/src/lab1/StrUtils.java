@@ -1,6 +1,6 @@
 package lab1;
 
-
+import java.util.Scanner;
 
 /**
  * Utility class with short methods reviewing fundamental Java concepts
@@ -15,7 +15,7 @@ public class StrUtils {
 	 * The course name for EECS1720.
 	 */
 	public static final String COURSE_NAME = "Building Interactive Systems";
-
+	
 	private StrUtils() {
 		// EMPTY BY DESIGN (nothing to do here)
 	}
@@ -46,8 +46,8 @@ public class StrUtils {
 	 * @return a string representation of the range
 	 */
 	public static String toString(Range r) {
-		
-		return "";
+		String range = "range from " + r.getMinimum() + " to " + r.getMaximum() ; 
+		return range;
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class StrUtils {
 		// NOTE: you can assume that the String is always a non-empty string
 		
 		
-		return 'a';		// will need to be changed to complete
+		return s.charAt(s.length()/2);		// will need to be changed to complete
 	}
 
 
@@ -101,8 +101,16 @@ public class StrUtils {
 	 * @return the string formed by alternating the case of the characters in s
 	 */
 	public static String alternatingCaps(String s) {
-		
-		return "";
+		String aCs ="";
+		for (int i=0; i<s.length(); i++){
+			char c = s.charAt(i);
+			if (lab1.LogicUtils.isOdd(i)){
+				aCs = aCs + Character.toUpperCase(c);
+			}else {
+				aCs = aCs + Character.toLowerCase(c);
+			}
+		}
+		return aCs;
 	}
 
 	
@@ -152,7 +160,40 @@ public class StrUtils {
 		double airTemp;			
 		double windSpeed;		
 		
-		
+		if(Character.toUpperCase(mode) == 'C' && args.length != 2) {
+			
+			System.out.println("Error Input airTemp and windSpeed args");
+			
+		}else if(Character.toUpperCase(mode) == 'C' && args.length == 2) {
+			
+			airTemp = Double.parseDouble(args[0]);
+			windSpeed = Double.parseDouble(args[1]);
+			double windChill = lab1.NumUtils.windChill(airTemp, windSpeed);
+			System.out.println("Wind Chill is "+ windChill +" When Air Temp: "+ airTemp + " and Wind Speed: " + windSpeed);
+			
+		}else if(Character.toUpperCase(mode) == 'U'){
+			
+			Scanner input = new Scanner(System.in);
+					
+			System.out.print("Please input the Air Temp <= 0 Celcius: ");
+			airTemp = Double.parseDouble(input.next());
+			while (airTemp > 0){
+				System.out.print("Error Air Temp range,please input the Air Temp <= 0 Celcius: ");
+				airTemp = Double.parseDouble(input.next());
+			}
+			
+			System.out.print("Please input the Wind Speed >= 15 km/h: "); 
+			windSpeed = Double.parseDouble(input.next());
+			while (windSpeed < 15){
+				System.out.print("Error Wind Speed range,please input the Wind Speed >= 15 km/h: ");
+				windSpeed = Double.parseDouble(input.next());
+			}
+			
+			
+			double windChill = lab1.NumUtils.windChill(airTemp, windSpeed);
+			System.out.println("Wind Chill is "+ windChill +" When Air Temp: "+ airTemp + " and Wind Speed: " + windSpeed);
+			
+		}
 		
 		
 		
@@ -184,9 +225,25 @@ public class StrUtils {
 		
 		// Use this to call the windChillUserInputs(..) method above
 		
+		windChillUserInputs(args, 'C');
 		
+		args = new String[2];
+				
+		args[0] = "-10";
+		args[1] = "15";
+		windChillUserInputs(args, 'C');
 		
+		args = new String[3];
+		args[0] = "-10";
+		args[1] = "15";
+		args[2] = "-1";
+		windChillUserInputs(args, 'C');
 		
+
+		windChillUserInputs(args, 'U');
+		windChillUserInputs(args, 'U');
+		windChillUserInputs(args, 'U');
+
 	}
 	
 	

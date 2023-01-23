@@ -276,7 +276,7 @@ public class TestAllUtils {
 	
 	@Test
 	public void test19_getCourseName() {
-		assertEquals("getCourseName() failed", "Advanced Object Oriented Programming", StrUtils.getCourseName());
+		assertEquals("getCourseName() failed", "Building Interactive Systems", StrUtils.getCourseName());
 	}
 
 	@Test
