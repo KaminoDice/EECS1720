@@ -19,7 +19,7 @@ public class StrUtils {
 	private StrUtils() {
 		// EMPTY BY DESIGN (nothing to do here)
 	}
-	
+	// private static Scanner scan;
 	/**
 	 * Returns the course name as the string.
 	 * 
@@ -192,7 +192,7 @@ public class StrUtils {
 			
 			double windChill = lab1.NumUtils.windChill(airTemp, windSpeed);
 			System.out.println("Wind Chill is "+ windChill +" When Air Temp: "+ airTemp + " and Wind Speed: " + windSpeed);
-			
+			input.close();
 		}
 		
 		
@@ -239,11 +239,12 @@ public class StrUtils {
 		args[2] = "-1";
 		windChillUserInputs(args, 'C');
 		
-
+		//scan = new Scanner(System.in);
 		windChillUserInputs(args, 'U');
-		windChillUserInputs(args, 'U');
-		windChillUserInputs(args, 'U');
-
+		
+		//windChillUserInputs(args, 'U');
+		//windChillUserInputs(args, 'U');
+		//scan.close();
 	}
 	
 	
