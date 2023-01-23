@@ -101,16 +101,16 @@ public class StrUtils {
 	 * @return the string formed by alternating the case of the characters in s
 	 */
 	public static String alternatingCaps(String s) {
-		String aCs ="";
+		StringBuilder aCs = new StringBuilder();
 		for (int i=0; i<s.length(); i++){
 			char c = s.charAt(i);
-			if (lab1.LogicUtils.isOdd(i)){
-				aCs = aCs + Character.toUpperCase(c);
+			if ( i%2 != 0 ){
+				aCs.append(Character.toUpperCase(c));
 			}else {
-				aCs = aCs + Character.toLowerCase(c);
+				aCs.append(Character.toLowerCase(c));
 			}
 		}
-		return aCs;
+		return aCs.toString();
 	}
 
 	
