@@ -185,11 +185,54 @@ public class Question05 {
 		 * Your solution should still work for input that 
 		 * 
 		 */
-
-
-
+		String[] inputSplit= timeStr.split(":", 3);
+		
+		int minTotal = 0;
+		String hourNumS = inputSplit[0];
+		String minNumS;
+		try{
+			minNumS = inputSplit[1];
+		}
+		catch(java.lang.ArrayIndexOutOfBoundsException e){
+			return "Missing Colon!";
+		}
+		
+		int hourNum = 0;
+		int minNum= 0;
+		try {
+			hourNum = Integer.parseInt(hourNumS);
+			minNum = Integer.parseInt(minNumS);
+		}
+		catch(java.lang.NumberFormatException e) {
+			return "Non-numeric data!";
+		}
+		
+		if(hourNum == TWELVE && minNum <= 59 && minNum>=0) {
+			minTotal = minNum;
+		}else if(hourNum < TWELVE && hourNum> 0 && minNum <= 59 && minNum>=0){
+			minTotal = hourNum * MINS_PER_HOUR + minNum;
+		}else{
+			try {
+				throw new RuntimeException("Value out of range!");
+			}
+			catch(RuntimeException e) {
+				return e.getMessage();
+			}
+		}
+		if(inputSplit[2].toUpperCase().equals("AM")) {
+			
+		}else if(inputSplit[2].toUpperCase().equals("PM")){
+			minTotal = minTotal + TWELVE * MINS_PER_HOUR;
+		}else{
+			try {
+				throw new RuntimeException("Invalid AM/PM indicator!");
+			}
+			catch(RuntimeException e) {
+				return e.getMessage();
+			}
+		}
 	
-		return "";		// this must be changed
+		return String.valueOf(minTotal);	// this must be changed
 
 
 	}

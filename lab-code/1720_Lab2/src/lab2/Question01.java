@@ -112,7 +112,7 @@ public class Question01 {
 		final int MINS_PER_HOUR = 60;
 		final int TWELVE = 12;
 		
-		
+		String[] inputSplit= userInput.split(":", 2);
 		/*
 		 * Identify and make use of a method that can be used to extract
 		 * the two colon-delimited tokens from the String parameter "userInput"
@@ -137,8 +137,9 @@ public class Question01 {
 		 * 
 		 */
 		
-
-		
+		int minTotal = 0;
+		int hourNum = Integer.parseInt(inputSplit[0]);
+		int minNum = Integer.parseInt(inputSplit[1]);
 		
 		/*
 		 * Now identify and make use of a method that can be used to parse each
@@ -146,7 +147,11 @@ public class Question01 {
 		 * these lab questions, declare the variables and assign the variables in 
 		 * separate statements (you will see why we need to do this in Question03).
 		 */
-		
+		if(hourNum == TWELVE) {
+			minTotal = minNum;
+		}else{
+			minTotal = hourNum * MINS_PER_HOUR + minNum;
+		}
 
 
 		/*
@@ -167,7 +172,7 @@ public class Question01 {
 		 * Hint: Do not use MAGIC NUMBERS (use the constants provided in this method)
 		 */
 		
-		return "";  //this must be changed
+		return String.valueOf(minTotal);  //this must be changed
 
 	}
 

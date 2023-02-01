@@ -124,7 +124,26 @@ public class Question02 {
 		 * Step 1: Cut and paste your solution (the contents of elapsedMins1()
 		 * from Question01 here (reduce/eliminate the comments as appropriate).
 		 */
+		String[] inputSplit= userInput.split(":", 2);
 		
+		int minTotal = 0;
+		String hourNumS = inputSplit[0];
+		String minNumS;
+		try{
+			minNumS = inputSplit[1];
+		}
+		catch(java.lang.ArrayIndexOutOfBoundsException e){
+			return "Missing Colon!";
+		}
+		
+		int hourNum = Integer.parseInt(hourNumS);
+		int minNum = Integer.parseInt(minNumS);
+		
+		if(hourNum == TWELVE) {
+			minTotal = minNum;
+		}else{
+			minTotal = hourNum * MINS_PER_HOUR + minNum;
+		}
 		/*
 		 * Step 2: Read the blue comment block above (or lab API link for Question02). 
 		 * You will see that we now need to implement additional behaviours for the app. 
@@ -196,12 +215,16 @@ public class Question02 {
 		 * 
 		 * Change the catch block back to ArrayIndexOutOfBoundsException
 		 */
-
+		/*
+		 * App can only adhere ArrayIndexOutOfBoundsException by catch ArrayIndexOutOfBoundsException
+		 * while can not adhere by catch NumberFormatException
+		 * But catch the RuntimeException can adhere any exception during runtime include ArrayIndexOutOfBoundsException.
+		 */
 
 		
 
 
-		return "";  // this must be changed
+		return String.valueOf(minTotal);  // this must be changed
 
 
 

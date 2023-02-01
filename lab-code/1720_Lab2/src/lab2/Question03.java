@@ -176,11 +176,37 @@ public class Question03 {
 		 * from the method (this effectively exits the method gracefully, and the program finishes 
 		 * normally in main() )
 		 */
+		String[] inputSplit= timeStr.split(":", 2);
 		
+		int minTotal = 0;
+		String hourNumS = inputSplit[0];
+		String minNumS;
+		try{
+			minNumS = inputSplit[1];
+		}
+		catch(java.lang.ArrayIndexOutOfBoundsException e){
+			return "Missing Colon!";
+		}
+		
+		int hourNum = 0;
+		int minNum= 0;
+		try {
+			hourNum = Integer.parseInt(hourNumS);
+			minNum = Integer.parseInt(minNumS);
+		}
+		catch(java.lang.NumberFormatException e) {
+			return "Non-numeric data!";
+		}
+		
+		if(hourNum == TWELVE) {
+			minTotal = minNum;
+		}else{
+			minTotal = hourNum * MINS_PER_HOUR + minNum;
+		}
 		
 		
 
-		return "";  // this must be changed
+		return String.valueOf(minTotal);  // this must be changed
 
 
 
