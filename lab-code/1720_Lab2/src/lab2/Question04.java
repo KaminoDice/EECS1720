@@ -233,7 +233,7 @@ public class Question04 {
 			minTotal = hourNum * MINS_PER_HOUR + minNum;
 		}else{
 			try {
-				throw new RuntimeException("Value out of range!");
+				throw new RuntimeException("Values out of range!");
 			}
 			catch(RuntimeException e) {
 				return e.getMessage();

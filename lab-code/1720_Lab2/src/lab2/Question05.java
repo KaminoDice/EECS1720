@@ -190,8 +190,10 @@ public class Question05 {
 		int minTotal = 0;
 		String hourNumS = inputSplit[0];
 		String minNumS;
+		String attrM;
 		try{
 			minNumS = inputSplit[1];
+			attrM = inputSplit[2];
 		}
 		catch(java.lang.ArrayIndexOutOfBoundsException e){
 			return "Missing Colon!";
@@ -213,15 +215,15 @@ public class Question05 {
 			minTotal = hourNum * MINS_PER_HOUR + minNum;
 		}else{
 			try {
-				throw new RuntimeException("Value out of range!");
+				throw new RuntimeException("Values out of range!");
 			}
 			catch(RuntimeException e) {
 				return e.getMessage();
 			}
 		}
-		if(inputSplit[2].toUpperCase().equals("AM")) {
+		if(attrM.toUpperCase().equals("AM")) {
 			
-		}else if(inputSplit[2].toUpperCase().equals("PM")){
+		}else if(attrM.toUpperCase().equals("PM")){
 			minTotal = minTotal + TWELVE * MINS_PER_HOUR;
 		}else{
 			try {
