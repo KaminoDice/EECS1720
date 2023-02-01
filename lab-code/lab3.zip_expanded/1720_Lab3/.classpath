@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/Users/mkyan/Library/CloudStorage/OneDrive-YorkUniversity/DBoxToOrg/2015 - York University/Teaching/EECS 1720 - Building Interactive Systems/EECS1720 - W2023/04_Code/Libraries/ImagePackage/imagePackage.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
