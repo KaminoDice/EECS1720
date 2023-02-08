@@ -11,9 +11,15 @@ public class Ghost1 {
 	
 	
 	// CLASS FIELDS =======================================
-
-
-	
+	public  int x;
+	public  int y;
+	public  int size;
+	public  int eyeRad;
+	public  int pupilRad;
+	public  int direction;
+	public  boolean frightened;
+	public  boolean eaten;
+	public  Color normalCol;
 	// CLASS CONSTRUCTORS =================================
 	
 	/**
@@ -21,7 +27,15 @@ public class Ghost1 {
 	 */
 	public Ghost1() {
 		
-	
+		x = 0;
+		y = 0;
+		size = 100;
+		eyeRad = size/8;
+		pupilRad = eyeRad/2;
+		normalCol = Color.CYAN;
+		frightened = false;
+		eaten = false;
+		direction = Game.EAST;
 		
 	}
 	
@@ -30,7 +44,16 @@ public class Ghost1 {
 	 * 
 	 */
 	public Ghost1(int x, int y, int size) {
-	
+		
+		this.x = x;
+		this.y = y;
+		this.size = size;
+		eyeRad = this.size/8;
+		pupilRad = eyeRad/2;
+		normalCol = Color.CYAN;
+		frightened = false;
+		eaten = false;
+		direction = Game.EAST;
 		
 	}
 	
@@ -40,7 +63,15 @@ public class Ghost1 {
 	 */
 	public Ghost1(int x, int y, int size, Color body, int direction) {
 		
-		
+		this.x = x;
+		this.y = y;
+		this.size = size;
+		eyeRad = this.size/8;
+		pupilRad = eyeRad/2;
+		this.normalCol = body;
+		frightened = false;
+		eaten = false;
+		this.direction = direction;
 		
 	}
 	
@@ -53,6 +84,16 @@ public class Ghost1 {
 	 */
 	public String toString() {
 		
+		String output = "Ghost @ (";
+		output = output + String.valueOf(this.x) + ", " + String.valueOf(this.y) + "):\n\t[ size = " + String.valueOf(this.size) + " * " + String.valueOf(this.size) + " ]\n\t[ colour = " + String.valueOf(this.normalCol) + " ]\n\t";
+		if (this.eaten && this.frightened) {
+			output = output + "[ state = eaten ]";
+		}else if (this.frightened) {
+			output = output + "[ state = frightened ]";
+		}else {
+			output = output + "[ state = normal ]";
+		}
+		return output;
 		
 	}
 	
@@ -82,11 +123,19 @@ public class Ghost1 {
 		 * 
 		 * 
 		 */
-		
-		
-		
-		
-		
-		
+		System.out.println();
+		Ghost1 scarey1 = new Ghost1();
+		System.out.println(scarey1.toString());
+		System.out.println();
+		Ghost1 scarey2 = new Ghost1(0,100,100);
+		System.out.println(scarey2.toString());
+		System.out.println();
+		Ghost1 scarey3 = new Ghost1(300,400,200);
+		scarey3.normalCol = Color.LIGHT_GRAY;
+		System.out.println(scarey3.toString());
+		System.out.println();
+		Ghost1 scarey4 = new Ghost1(580,340,180,Color.magenta, Game.SOUTH);
+		System.out.println(scarey4.toString());
+		System.out.println();
 	}
 }

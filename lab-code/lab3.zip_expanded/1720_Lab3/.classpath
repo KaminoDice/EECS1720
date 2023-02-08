@@ -7,6 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="/Users/mkyan/Library/CloudStorage/OneDrive-YorkUniversity/DBoxToOrg/2015 - York University/Teaching/EECS 1720 - Building Interactive Systems/EECS1720 - W2023/04_Code/Libraries/ImagePackage/imagePackage.jar"/>
+	<classpathentry kind="lib" path="imagePackage.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

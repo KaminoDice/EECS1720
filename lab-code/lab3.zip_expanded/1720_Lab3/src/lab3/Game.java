@@ -33,6 +33,11 @@ public class Game {
 		badGuys[3] = new Ghost3(app.getWidth()/4-size/2,3*app.getHeight()/4-size/2,size,Color.ORANGE,Game.WEST); 	// clyde
 		
 		
+		badGuys[0].move('L', 20);
+		badGuys[1].move('D', 50);
+		badGuys[2].setEaten(true);
+		badGuys[3].setFrightened(true);
+		
 		
 		for (Ghost3 baddie : badGuys) {
 			baddie.render(app.getGraphics2D());

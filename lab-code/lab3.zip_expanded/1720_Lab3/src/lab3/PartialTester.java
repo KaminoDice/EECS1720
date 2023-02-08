@@ -88,18 +88,23 @@ public class PartialTester {
 		
 	}
 	@Test
-	public void testQ1_04_toString() {
-		Ghost1 act1 = new Ghost1();
-		Ghost1 act2 = new Ghost1(183,435,240);
-		Ghost1 act3 = new Ghost1(183,435,240,Color.GREEN,134);
-		
-		assertEquals("Ghost @ (0, 0):\n\t[ size = 100 * 100 ]\n\t[ colour = java.awt.Color[r=0,g=255,b=255] ]\n\t[ state = normal ]",act1.toString());
-		
-		assertEquals("Ghost @ (183, 435):\n\t[ size = 240 * 240 ]\n\t[ colour = java.awt.Color[r=0,g=255,b=255] ]\n\t[ state = normal ]",act2.toString());
-		
-		assertEquals("Ghost @ (183, 435):\n\t[ size = 240 * 240 ]\n\t[ colour = java.awt.Color[r=0,g=255,b=0] ]\n\t[ state = normal ]",act3.toString());
-		
-	}
+    public void testQ1_04_toString() {
+        Ghost1 act1 = new Ghost1();
+        Ghost1 act2 = new Ghost1(183,435,240);
+        Ghost1 act3 = new Ghost1(183,435,240,Color.GREEN,134);
+
+        assertEquals("Ghost @ (0, 0):\n\t[ size = 100 * 100 ]\n\t[ colour = java.awt.Color[r=0,g=255,b=255] ]\n\t[ state = normal ]",act1.toString());
+        assertEquals("Ghost @ (183, 435):\n\t[ size = 240 * 240 ]\n\t[ colour = java.awt.Color[r=0,g=255,b=255] ]\n\t[ state = normal ]",act2.toString());
+        assertEquals("Ghost @ (183, 435):\n\t[ size = 240 * 240 ]\n\t[ colour = java.awt.Color[r=0,g=255,b=0] ]\n\t[ state = normal ]",act3.toString());
+
+        act3.frightened=true;
+        assertEquals("Ghost @ (183, 435):\n\t[ size = 240 * 240 ]\n\t[ colour = java.awt.Color[r=0,g=255,b=0] ]\n\t[ state = frightened ]",act3.toString());
+
+        act3.eaten=true;
+        assertEquals("Ghost @ (183, 435):\n\t[ size = 240 * 240 ]\n\t[ colour = java.awt.Color[r=0,g=255,b=0] ]\n\t[ state = eaten ]",act3.toString());
+
+
+    }
 
 
 	/*
