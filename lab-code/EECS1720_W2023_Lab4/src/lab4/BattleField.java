@@ -30,24 +30,88 @@ public class BattleField {
 	public BattleField(int width, int height) {
 		
 		// TO COMPLETE (Exercise02)
+		ROWS=3;
+		COLS=10;
+		gameBoard = new RasterImage(width, height);
+		gfx = gameBoard.getGraphics2D();
 		
+		aliens = new Alien[ROWS][COLS];
+		for(int col=0;col<COLS;col++) {
+			for (int row=0; row<ROWS; row++) {
+				Point2D.Double pos = new Point2D.Double(col*60.0,row*60.0);
+				aliens[row][col]= new Alien(pos);
+			}
+		}
 		
+		gameBoard.show();
+		gameBoard.setTitle("BattleField Ex2");
 	}
 	
+	public void setROWS(int row) {
+		this.ROWS=row;
+	}
 	
+	public void setCOLS(int col) {
+		this.COLS=col;
+	}
+	
+	public int getROWS() {
+		return this.ROWS;
+	}
+	
+	public int getCOLS() {
+		return this.COLS;
+	}
 	
 	public BattleField(int width, int height, int n) {
 		
 		// TO COMPLETE (Exercise03, part d)
+		ROWS=3;
+		COLS=10;
+		gameBoard = new RasterImage(width, height);
+		gfx = gameBoard.getGraphics2D();
 		
+		aliens = new Alien[ROWS][COLS];
+		Random seed = new Random(n);
+		for(int col=0;col<COLS;col++) {
+			for (int row=0; row<ROWS; row++) {
+				Point2D.Double pos = new Point2D.Double(col*60.0,row*60.0);
+				switch (seed.nextInt(4)){
+					case 0:
+						aliens[row][col]= new AngryAlien(pos);
+						break;
+					case 1:
+						aliens[row][col]= new DocileAlien(pos);
+						break;
+					case 2:
+						aliens[row][col]= new NeutralAlien(pos);
+						break;
+					case 3:
+						aliens[row][col]= new Alien(pos);
+						break;
+				}
+			}
+		}
 		
+
+		gameBoard.show();
+		gameBoard.setTitle("BattleField Ex3");
 	}
 	
 	public void draw() {
 		
 		// TO COMPLETE (Exercise02)
+		gfx.setColor(Color.white);
+		gfx.fillRect(0, 0, gameBoard.getWidth(), gameBoard.getHeight());
 		
+		for (int i=0;i<this.aliens.length;i++) {
+			for (int j=0;j<this.aliens[i].length;j++) {
+				aliens[i][j].drawAlien(gfx);
+			}
+		}	
 		
+		shooter = new Hero(200,350);
+		shooter.draw(gfx);
 	}
 	
 	
@@ -55,7 +119,7 @@ public class BattleField {
 		int randR = r.nextInt(ROWS);
 		int randC = r.nextInt(COLS);
 		aliens[randR][randC].setColor(Color.red);
-		aliens[randR][randC].drawAlien(g);
+		aliens[randR][randC].drawAlien(gfx);
 		// TO COMPLETE (Exercise02)
 		
 	}
@@ -64,8 +128,13 @@ public class BattleField {
 	public void advanceEnemy() {
 		
 		// TO COMPLETE (Exercise03, part e)
+		for (int i=0;i<this.aliens.length;i++) {
+			for (int j=0;j<this.aliens[i].length;j++) {
+				aliens[i][j].advance();
+			}
+		}	
 		
-		
+		this.draw();
 	}
 	
 	
@@ -113,11 +182,17 @@ public class BattleField {
 		// (when the class is complete as per lab4 requirements)
 		// 
 		// this relates to STEP 2, Exercise02 and onwards...
+		BattleField battlefield2 = new BattleField(600,500);
+		battlefield2.draw();
+		Random r= new Random();
+		battlefield2.selectAlien(r);
+
+		BattleField battlefield3 = new BattleField(600, 500, 14);
+		battlefield3.draw();
+		battlefield3.advanceEnemy();
 		
-
-		
-
-
-
+		//BattleField battlefield4 = new BattleField(640, 500, 14);
+		//battlefield4.advanceEnemy();
+		//battlefield4.draw();
 	}
 }

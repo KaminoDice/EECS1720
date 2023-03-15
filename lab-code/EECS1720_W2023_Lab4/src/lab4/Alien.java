@@ -154,8 +154,10 @@ public class Alien {
 	
 	public void advance() {
 		
-		// TO COMPLETE (Exercise03, part e)
-		
+		// TO COMPLETE (Exercise03, part e
+		Point2D.Double pos = this.getPos();
+		pos.setLocation(pos.x,pos.y+20);
+		this.setPos(pos);
 		
 	}
 	
