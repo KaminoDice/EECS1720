@@ -18,7 +18,12 @@ import java.util.Random;
 public class BattleField {
 
 	// CLASS FIELDS (Exercise02) - please conform to UML diagram in lab4 pdf!!
-	
+	private int ROWS;
+	private int COLS;
+	private RasterImage gameBoard;
+	private Graphics2D gfx;
+	private Alien[][] aliens;
+	private Hero shooter;
 	
 	
 	
@@ -47,7 +52,10 @@ public class BattleField {
 	
 	
 	public void selectAlien(Random r) {
-		
+		int randR = r.nextInt(ROWS);
+		int randC = r.nextInt(COLS);
+		aliens[randR][randC].setColor(Color.red);
+		aliens[randR][randC].drawAlien(g);
 		// TO COMPLETE (Exercise02)
 		
 	}
@@ -100,8 +108,7 @@ public class BattleField {
 		Hero shooter = new Hero(200,350);
 		shooter.draw(g);
 		
-		
-		
+
 		// include here statements to instantiate BattleField and advanceEnemy 
 		// (when the class is complete as per lab4 requirements)
 		// 
