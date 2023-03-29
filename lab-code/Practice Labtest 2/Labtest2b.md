@@ -90,17 +90,13 @@ and complete the program/method(s) as per the given instructions below.  As you 
 
 ### Question 1 - Inheritence (30 marks)
 
-Referring to the UML diagram shown below, the goal of this Question is to complete the 2 empty classes: `<b>Square</b>`, `<b>Rectangle</b>`.
-  Note that files have been added to the project (Square.java and
-Rectangle.java, however there is no shell code included within those
-files).  Please complete the code in those files, such that they conform
- to the UML specifications and the additional details laid out in the
-description below.
+Referring to the UML diagram shown below, the goal of this Question is to complete the 2 empty classes: `Square`, `Rectangle`.
+  *Note that files have been added to the project (`Square.java` and `Rectangle.java`, however there is no shell code included within those files).  Please complete the code in those files, such that they conform to the UML specifications and the additional details laid out in the description below.*
 
 ![](https://www.eecs.yorku.ca/course_archive/2019-20/W/1720/practice/ShapeSizeable2.png)
 
-* `<b>Square</b>` and `<b>Rectangle</b>` are both child classes of `<b>Shape</b>`.
-* The `<b>Square</b>` class implements:
+* `Square` and `Rectangle` are both child classes of `Shape`.
+* The `Square` class implements:
 
   * a default constructor: where by default, a square has a length of "10" and a position "LEFT".
   * a custom constructor: that uses arguments to set position, length and color (note `java.awt.Color` class is used for Color)
@@ -112,29 +108,17 @@ description below.
   * a custom constructor: that uses arguments to set position, width, height and color (note `java.awt.Color` class is used for Color)
   * a concrete version of the `showMe()` method which outputs the state of a Rectangle as per the example output shown below
   * concrete versions of the `reset()` and `resize(double scale)` methods which are explained further as follows
-* Both `<b>Square</b>` and `<b>Rectangle</b>` should conform to the `<b>Resizeable</b>`
-  interface (via the Shape class), such that their size based attributes
-  (length, width, height and scale) are modified only - according to the
-  next two bullet points
-* The interface `<b>Resizeable</b>` defines a method `<b>reset()</b>`
-  that will set the size of any length/size based attributes for an
-  object, back to their original size.  This is done by dividing these
-  attributes by the current scale, then re-setting them to these new
-  values, and re-setting the scale back to 1.0
-* The interface `<b>Resizeable</b>` defines a method `<b>resize(double scale)</b>`
-  that will scale and set the size of any length/size based attributes
-  for an object, to a new size based on the scale provided.  Scale is
-  assumed to be a positive number.  Resizing amounts to 3 steps:
+* Both `Square` and `Rectangle` should conform to the `Resizeable` interface (via the Shape class), such that their size based attributes (length, width, height and scale) are modified only - according to the next two bullet points
+* The interface `Resizeable` defines a method `reset()` that will set the size of any length/size based attributes for an object, back to their original size.  This is done by dividing these attributes by the current scale, then re-setting them to these new values, and re-setting the scale back to 1.0
+* The interface `Resizeable` defines a method `resize(double scale)` that will scale and set the size of any length/size based attributes
+  for an object, to a new size based on the scale provided.  Scale is assumed to be a positive number.  Resizing amounts to 3 steps:
 
   * generate a RuntimeException if the scale is negative (do not handle just throw) [optional]
   * reset any size based attributes to their original size (as per the reset method), and reset scale
   * scale the size based attributes (i.e. multiply by "scale" argument)
   * set the new value of scale
 
-To test your classes, run the file `<b>TestClient.java</b>`
-(without any modification). There should be absolutely NO modification
-of the Shape class either.  The output of the test client should be as
-follows:
+To test your classes, run the file `TestClient.java` (without any modification). There should be absolutely NO modification of the Shape class either.  The output of the test client should be as follows:
 
 ```
 
@@ -196,48 +180,35 @@ r2 (after reset):
 
 ### Question 2 - Simple Java AWT/Swing GUI (30 marks)
 
-In reference to additional comments and instructions provided in the source file `<b>SquareFootCalculator.java</b>` file, you are required to complete the implementation of a basic GUI and event handler for the JavaFX application: `<b>SquareFootCalculator</b>`.  This simple GUI should have the following features:
+In reference to additional comments and instructions provided in the source file `SquareFootCalculator.java` file, you are required to complete the implementation of a basic GUI and event handler for the JavaFX application: `SquareFootCalculator`.  This simple GUI should have the following features:
 
     ![](https://www.eecs.yorku.ca/course_archive/2019-20/W/1720/practice/SquareFootOpen.png)
 
-* The application includes a `<b>Label</b>` with the text "Height:", and an empty `<b>TextField</b>`  for capturing the height of an area
-* The application includes a second `<b>Label</b>` with the text "Width:" and an associated `<b>TextField</b>` for capturing the width of an area
-* The application should include a clickable `<b>Button</b>`
-  to trigger an Event to calculate the square footage of the area defined
-  by height x width. The button should display the text "calculate area
-  (sq ft)", and should be located below the Height and Width TextFields
-* There should be two `<b>RadioButtons</b>` to the right of
-  the TextFields, for selecting the units for the calculation (either
-  metres "m", or feet "ft").  See the intended layout above.  Selecting
-  one of these buttons will automatically deselect the other, and
-  initially, "m" should be selected
+* The application includes a `Label` with the text "Height:", and an empty `TextField`  for capturing the height of an area
+* The application includes a second `Label` with the text "Width:" and an associated `TextField` for capturing the width of an area
+* The application should include a clickable `Button` to trigger an Event to calculate the square footage of the area defined by height x width. The button should display the text "calculate area (sq ft)", and should be located below the Height and Width TextFields
+* There should be two `RadioButtons` to the right of the TextFields, for selecting the units for the calculation (either metres "m", or feet "ft").  See the intended layout above.  Selecting one of these buttons will automatically deselect the other, and initially, "m" should be selected
 * All above UI controls should be placed in a GridPane layout
 * The Event handler can be an inner class or external class that can respond to an ActionEvent on the calculate area button
-* The Event triggered by the calculate area button should show an
-  output message to the console based on the contents of the text fields,
-  and the state of the radiobutton.  If the units is "m", then the width
-  and height will both be converted to feet before calculating the square
-  feet (height x width).  You may use the conversion: 1 m = 3.28084 ft
-  (included in the java file already).  Some example outputs are shown
-  below:
+* The Event triggered by the calculate area button should show an output message to the console based on the contents of the text fields, and the state of the radiobutton.  If the units is "m", then the width and height will both be converted to feet before calculating the square feet (height x width).  You may use the conversion: 1 m = 3.28084 ft (included in the java file already).  Some example outputs are shown below:
 
   * Example 1: If either height or width is empty, then the result written to the console should be:
 
-    ![](https://www.eecs.yorku.ca/course_archive/2019-20/W/1720/practice/SquareFootNothing.png)
+    ![img](https://www.eecs.yorku.ca/course_archive/2019-20/W/1720/practice/SquareFootNothing.png)
 
     ```
     "One or more dimensions is empty!"
     ```
   * Example 2: If height=10.0, width=1, and the units selected are "m", then the result written to the console should be:
 
-    ![](https://www.eecs.yorku.ca/course_archive/2019-20/W/1720/practice/SquareFootM.png)
+    ![img](https://www.eecs.yorku.ca/course_archive/2019-20/W/1720/practice/SquareFootM.png)
 
     ```
     "Total Area = 107.63911105599999 sq. ft"
     ```
   * Example 3: If height=15.0, width=3.5, and the units selected are in "ft", then the result written to the console should be:
 
-    ![](https://www.eecs.yorku.ca/course_archive/2019-20/W/1720/practice/SquareFootFT.png)
+    ![img](https://www.eecs.yorku.ca/course_archive/2019-20/W/1720/practice/SquareFootFT.png)
 
     ```
     "Total Area = 52.5 sq. ft"

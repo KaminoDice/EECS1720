@@ -1,6 +1,7 @@
 package week6;
 
 import java.awt.*; 
+import java.awt.event.*;
 
 /* We have extended the Frame class here,  thus our class "SimpleExample"      
  * would behave like a Frame  */ 
@@ -44,8 +45,12 @@ public class Example2b extends Frame {
 		this.add(c);	
 		
 		this.setVisible(true);
-
-
+		//AWT的Frame窗口点击右上角的 × ，默认是不能关闭的，因为我们没给该窗口编写任何事件响应，下面介绍一种关闭frame窗口的方法 import java.awt.event.*
+		this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+		});
 	}
 	
 	public static void main(String args[]) {

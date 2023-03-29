@@ -91,12 +91,12 @@ The application acts as a simple GUI to construct and post
 
 The application should support the following features/behaviours:
 
-* The application includes two `<b>JLabels</b>` with the text "Recipient:" and "Tweet:" respectively (see figures)
-* The application includes two `<b>JTextFields</b>` for indicating the recipient (who a tweet is directed at), and the
+* The application includes two `JLabels` with the text "Recipient:" and "Tweet:" respectively (see figures)
+* The application includes two `JTextFields` for indicating the recipient (who a tweet is directed at), and the
   tweet message itself (what will be tweeted). The recipient field is
   initially empty, while the tweet message initially contains the text
   "type tweet here"
-* The application includes a `<b>JButton</b>` with no text and a single icon using `<b>TwitterIcon.png</b>` included in the project file. Note that the size of the original icon
+* The application includes a `JButton` with no text and a single icon using `TwitterIcon.png` included in the project file. Note that the size of the original icon
   image is large, and has been scaled for you using "getScaledInstance(..)". Use the newly set ImageIcon to create the JButton.
 * The text area should conform to the size of the *controls* JPanel (already provided for you in the code).
   This *controls* panel should hold all the GUI components, including the text area (also provided already in the code).
@@ -129,7 +129,7 @@ The application should support the following features/behaviours:
 
 ### Question 2 - Mouse/KeyEvent GUI (30 marks)
 
-    In this question, the goal is to complete the GUI application in`<b>CircleDraw.java</b>`
+    In this question, the goal is to complete the GUI application in`CircleDraw.java`
 	that captures and processes mouse-based events to achieve the simple placement and sizing
 	of a circle on a custom canvas. Shell code has been provided for you that lays out the GUI elements.
     Your job is to complete the application (primarily the custom canvas class, and the handler class).
@@ -163,8 +163,8 @@ The application should support the following features/behaviours:
   the circle), and RR = the radius of the circle.  This status is
   continuously refreshed as the user drags the mouse.
 
-  *Note: you may consider using `<b>Line2D.Double</b>` and `<b>Ellipse2D.Double</b>` from
-  `<b>java.awt.geom</b>` when drawing the circle and axes (though it is not necessary).  Also, `<b>Point2D.Double</b>` objects have a method for computing distance to another Point2D.Double object.
+  *Note: you may consider using `Line2D.Double` and `Ellipse2D.Double` from
+  `java.awt.geom` when drawing the circle and axes (though it is not necessary).  Also, `Point2D.Double` objects have a method for computing distance to another Point2D.Double object.
   This can be useful for quickly calculating radius.*
 
 ---
