@@ -100,21 +100,17 @@ The application should support the following features/behaviours:
   image is large, and has been scaled for you using "getScaledInstance(..)". Use the newly set ImageIcon to create the JButton.
 * The text area should conform to the size of the *controls* JPanel (already provided for you in the code).
   This *controls* panel should hold all the GUI components, including the text area (also provided already in the code).
-  You need to provide additional code to ensure the text area has scroll access: i.e. it should **always**
-  include a
-  vertical scrollbar to handle and access all tweets appended to the text
-  area; while a horizontal scrollbar should only appear if
-  there are tweets that are too wide for the text area.
+  You need to provide additional code to ensure the text area has scroll access: i.e. it should **always** include a vertical scrollbar to handle and access all tweets appended to the text area; while a horizontal scrollbar should only appear if there are tweets that are too wide for the text area.
 * The layout does not need to be exact, but should be as close
   as possible to the figures.
 * The tweet button should trigger an event that when handled, appends an
   output message in the text area based on the following rules:
 
-  ![](https://www.eecs.yorku.ca/course_archive/2020-21/W/1720/practice/tweet2.png)
-  ![](https://www.eecs.yorku.ca/course_archive/2020-21/W/1720/practice/tweet3.png)
+  ![img](https://www.eecs.yorku.ca/course_archive/2020-21/W/1720/practice/tweet2.png)
+  ![img](https://www.eecs.yorku.ca/course_archive/2020-21/W/1720/practice/tweet3.png)
 
-  ![](https://www.eecs.yorku.ca/course_archive/2020-21/W/1720/practice/tweet4.png)
-  ![](https://www.eecs.yorku.ca/course_archive/2020-21/W/1720/practice/tweet5.png)
+  ![img](https://www.eecs.yorku.ca/course_archive/2020-21/W/1720/practice/tweet4.png)
+  ![img](https://www.eecs.yorku.ca/course_archive/2020-21/W/1720/practice/tweet5.png)
 * If Recipient and Tweet JTextFields are not empty, output "Tweeting @
   NAME: MESSAGE", where NAME = the string entered in the Recipient
   JTextField, and MESSAGE = the message typed into the Tweet JTextField (see above examples)
@@ -130,18 +126,12 @@ The application should support the following features/behaviours:
 ### Question 2 - Mouse/KeyEvent GUI (30 marks)
 
     In this question, the goal is to complete the GUI application in`CircleDraw.java`
-	that captures and processes mouse-based events to achieve the simple placement and sizing
-	of a circle on a custom canvas. Shell code has been provided for you that lays out the GUI elements.
+	that captures and processes mouse-based events to achieve the simple placement and sizing of a circle on a custom canvas. Shell code has been provided for you that lays out the GUI elements.
     Your job is to complete the application (primarily the custom canvas class, and the handler class).
 
- In this application, a circular shape is constructed when the user clicks and drags the mouse in the
-	canvas area. As the user drags the mouse, the circle is displayed in WHITE, and continuously resizes
-	until the mouse button is released, at which point it remains fixed.  In addition, a set of RED axes
-	are drawn through the centre of the circle. When the user clicks again, a new circle and axes
-	replace the old one.
+ In this application, a circular shape is constructed when the user clicks and drags the mouse in the canvas area. As the user drags the mouse, the circle is displayed in WHITE, and continuously resizes until the mouse button is released, at which point it remains fixed.  In addition, a set of RED axes are drawn through the centre of the circle. When the user clicks again, a new circle and axes replace the old one.
 
-    A status JLabel located at the bottom of the window
-	outputs some information about the circle and its radius as it is being constructed.
+    A status JLabel located at the bottom of the window outputs some information about the circle and its radius as it is being constructed.
 
     ![](https://www.eecs.yorku.ca/course_archive/2020-21/W/1720/practice/circleDraw1.png)
     ![](https://www.eecs.yorku.ca/course_archive/2020-21/W/1720/practice/circleDraw2.png)
@@ -150,11 +140,8 @@ The application should support the following features/behaviours:
 The application should support the following features/behaviours:
 
 * The custom canvas inherits from JPanel, and overrides the paintComponent method.
-* When the user clicks into the custom canvas with the mouse, a centre point is selected for
-  drawing a circle.  Continuing to hold the mouse button down while dragging will compute a radius for the
-  circle (distance from the point first clicked)
-* As the user drags the mouse, a circle of the computed radius will display as white, while a set of
-  red lines representing an x and y axis through the centre of the circle will also be displayed
+* When the user clicks into the custom canvas with the mouse, a centre point is selected for drawing a circle.  Continuing to hold the mouse button down while dragging will compute a radius for the circle (distance from the point first clicked)
+* As the user drags the mouse, a circle of the computed radius will display as white, while a set of red lines representing an x and y axis through the centre of the circle will also be displayed
 * When the user releases the mouse button, the circle will remain fixed at the last radius determined before release
 * As the mouse is being dragged, the status JLabel should show the
   string "Status: drawing circle: (XX,YY) radius = RR",
