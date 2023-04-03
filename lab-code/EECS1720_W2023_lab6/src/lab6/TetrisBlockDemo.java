@@ -56,12 +56,15 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 
 		this.block = TetrisBlockDemo.randomBlock();
 		this.isFalling = false;
-
+		
 		this.addKeyListener(this);
 		this.addMouseListener(this);
 		this.setFocusable(true);
-		this.requestFocusInWindow();
-        
+		//this.requestFocusInWindow();
+
+		
+		this.timer=new Timer(1000, this);
+		this.timer.start();
 		
 	}
 	
@@ -151,7 +154,7 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 				break;
 		}
 		this.playingField.repaint();
-		//System.out.println(key+" Pressed ");
+		System.out.println(key+" Pressed ");
 
 	}
 
@@ -210,7 +213,6 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 	
 	
 	// EXERCISE 4 (HANDLE THE ANIMATION OF A BLOCK AS IT FALLS)
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -220,23 +222,21 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 		System.out.print("timer event: ");
 	
 
-		if (this.isFalling) {
+		if (isFalling) {
 
 			System.out.println(" falling");
 			
 			// ADD STATEMENTS HERE TO UPDATE BLOCK POSITION IF FALLING
-			Point2D newPosition = new Point2D.Double(this.block.getPosition().getX(),
-		                                         this.block.getPosition().getY() + FALLING_SPEED);
-			this.block.setPosition(newPosition);
+			block.moveDown();
 			
 
-			System.out.println("   -> pos: " + this.block.getPosition().getY());
+			System.out.println("   -> pos: " + block.getPosition().getY());
 			
-			if (this.block.getPosition().getY() > CANVAS_HEIGHT) {
+			if (block.getPosition().getY() > CANVAS_HEIGHT) {
 				
 				// INSTANTIATE A NEW RANDOM BLOCK IF THE PREVIOUS BLOCK FALLS OFF BOTTOM OF THE SCREEN/PLAYING FIELD
-				this.isFalling = false;
-				this.block = this.getRandomBlock();
+				isFalling = false;
+				block = TetrisBlockDemo.randomBlock();
 				
 			}
 		}
@@ -244,8 +244,9 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 			System.out.println(" stopped");
 		}
 		
-		this.playingField.repaint();
+		playingField.repaint();
 	}
+	
 
 	
 	
