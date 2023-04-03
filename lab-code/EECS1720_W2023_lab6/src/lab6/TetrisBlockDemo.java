@@ -57,7 +57,11 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 		this.block = TetrisBlockDemo.randomBlock();
 		this.isFalling = false;
 
-		
+		this.addKeyListener(this);
+		this.addMouseListener(this);
+		this.setFocusable(true);
+		this.requestFocusInWindow();
+        
 		
 	}
 	
@@ -127,7 +131,27 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
+		int key = e.getKeyCode();
+    
+		switch (key) {
+			case KeyEvent.VK_A:
+				block.moveLeft();
+				break;
+			case KeyEvent.VK_D:
+				block.moveRight();
+				break;
+			case KeyEvent.VK_J:
+				block.spinLeft();
+				break;
+			case KeyEvent.VK_L:
+				block.spinRight();
+				break;
+			case KeyEvent.VK_S:
+				isFalling = !isFalling;
+				break;
+		}
+		this.playingField.repaint();
+		//System.out.println(key+" Pressed ");
 
 	}
 
@@ -146,7 +170,14 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-	
+		double distance = e.getX() - block.getPosition().getX();
+        
+        if (distance < 0) {
+            block.spinLeft();
+        } else{
+            block.spinRight();
+        }
+        this.playingField.repaint();
 		
 	}
 
@@ -194,7 +225,9 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 			System.out.println(" falling");
 			
 			// ADD STATEMENTS HERE TO UPDATE BLOCK POSITION IF FALLING
-			
+			Point2D newPosition = new Point2D.Double(this.block.getPosition().getX(),
+		                                         this.block.getPosition().getY() + FALLING_SPEED);
+			this.block.setPosition(newPosition);
 			
 
 			System.out.println("   -> pos: " + this.block.getPosition().getY());
@@ -202,8 +235,8 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 			if (this.block.getPosition().getY() > CANVAS_HEIGHT) {
 				
 				// INSTANTIATE A NEW RANDOM BLOCK IF THE PREVIOUS BLOCK FALLS OFF BOTTOM OF THE SCREEN/PLAYING FIELD
-				
-				
+				this.isFalling = false;
+				this.block = this.getRandomBlock();
 				
 			}
 		}

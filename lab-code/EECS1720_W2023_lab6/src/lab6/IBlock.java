@@ -75,7 +75,9 @@ public class IBlock extends Block {
     public void spinLeft() {
         
     		// TO COMPLETE (modify and use the gridIndex value to select and assign the new grid from grids ArrayList) when spinning "left"
-    	
+        int newGridIndex = (this.gridIndex == 0) ? 3 : this.gridIndex - 1;
+        this.gridIndex = newGridIndex;
+        this.grid = this.grids.get(newGridIndex);
     	
     	
     }
@@ -91,7 +93,9 @@ public class IBlock extends Block {
     public void spinRight() {
         
     		// TO COMPLETE (modify and use the gridIndex value to select and assign the new grid from grids ArrayList) when spinning "left"
-    	
+        int newGridIndex = (this.gridIndex == 3) ? 0 : this.gridIndex + 1;
+        this.gridIndex = newGridIndex;
+        this.grid = this.grids.get(newGridIndex);	
     }
 
 }
