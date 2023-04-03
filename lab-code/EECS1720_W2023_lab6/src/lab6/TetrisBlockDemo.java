@@ -57,13 +57,17 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 		this.block = TetrisBlockDemo.randomBlock();
 		this.isFalling = false;
 		
+		
+		
+		this.setFocusable(true);
+		
+
 		this.addKeyListener(this);
 		this.addMouseListener(this);
-		this.setFocusable(true);
-		//this.requestFocusInWindow();
-
 		
-		this.timer=new Timer(1000, this);
+		this.requestFocus();
+		
+		this.timer=new Timer(500, this);
 		this.timer.start();
 		
 	}
@@ -128,7 +132,7 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
+
 	}
 
 
@@ -153,8 +157,9 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 				isFalling = !isFalling;
 				break;
 		}
+		this.requestFocusInWindow();
 		this.playingField.repaint();
-		System.out.println(key+" Pressed ");
+		//System.out.println(key+" Pressed ");
 
 	}
 
@@ -173,6 +178,7 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		
 		double distance = e.getX() - block.getPosition().getX();
         
         if (distance < 0) {
@@ -180,6 +186,10 @@ public class TetrisBlockDemo extends JFrame implements ActionListener, KeyListen
         } else{
             block.spinRight();
         }
+        
+        System.out.println("mouse X: "+e.getX()+" block X: "+block.getPosition().getX());
+        
+        this.requestFocusInWindow();
         this.playingField.repaint();
 		
 	}
