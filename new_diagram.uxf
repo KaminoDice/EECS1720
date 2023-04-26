@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>2</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>484</x>
+      <y>702</y>
+      <w>90</w>
+      <h>122</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+interfaces::CardConstants
+--
++RED = new Color(192, 80, 77): Color
++BLUE = new Color(0, 0, 128): Color
++GREEN = new Color(34, 139, 34): Color
++YELLOW = new Color(255, 204, 0): Color
++BLACK = new Color(0, 0, 0): Color
+~VS_PC = 1: int
+~MANUAL = 2: int
+~GAMEMODES = { VS_PC, MANUAL }: int[]
+~WIDTH = 50: int
+~HEIGHT = 65: int
+~CARDSIZE = new Dimension(WIDTH * 3, HEIGHT * 3): Dimension
++NUMBER = 1: int
++FUNCTION = 2: int
++WILD = 3: int
+~CHAR_REVERSE = (char) 8634: Character
+~CHAR_SKIP = (char) Integer.parseInt("2718", 16): Character
+~REVERSE = CHAR_REVERSE.toString(): String
+~SKIP = CHAR_SKIP.toString(): String
+~DRAW2PLUS = "+2": String
+~W_COLORPICKER = "T": String
+~W_DRAW4PLUS = "+4": String
+~CARDLISTENER = new MyCardListener(): MyCardListener
+~BUTTONLISTENER = new MyButtonListener(): MyButtonListener
+~USERLISTRNER = new UserPanelListener(): UserPanelListener
+~MENULISTRNER = new UserMenuListener(): UserMenuListener
+~MODELISTENER = new GameModeListener(): GameModeListener
+~TOTALCARD = 108: int
+~FIRDTHSND = 7: int
+~UNOCOLORS = { RED, BLUE, GREEN, YELLOW }: Color[]
+~WILDCARDCOLOR = BLACK: Color
+~UNONUMBERS = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }: int[]
+~FUNCTIONTYPES = { REVERSE, SKIP, DRAW2PLUS }: String[]
+~WILDTYPES = { W_COLORPICKER, W_DRAW4PLUS }: String[]
+~INFO_PANEL = new InfoPanel(): InfoPanel
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>798</y>
+      <w>56</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>model::Player
+--
+-user = new User(): User
+~playername: String
+~playerscore: int
+~playpassword: String
+-name = null: String
+-password = null: String
+-score = 0: int
+-isMyTurn = false: boolean
+-saidUNO = false: boolean
+-myCards: LinkedList&lt;model.UNOCard&gt;
+-playedCards = 0: int
+--
++Player(User user): ctor
++Player(): ctor
++getPassword(): String
++setPassword(String password): void
++getScore(): int
++setScore(int score): void
++setName(String newName): void
++getName(): String
++obtainCard(UNOCard card): void
++getAllCards(): LinkedList&lt;UNOCard&gt;
++getTotalCards(): int
++hasCard(UNOCard thisCard): boolean
++removeCard(UNOCard thisCard): void
++totalPlayedCards(): int
++toggleTurn(): void
++isMyTurn(): boolean
++hasCards(): boolean
++getSaidUNO(): boolean
++saysUNO(): void
++setSaidUNOFalse(): void
++setCards(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>656</x>
+      <y>808</y>
+      <w>78</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>model::Game
+--
+-players: Player[]
+-isOver: boolean
+-GAMEMODE: int
+-pc: Pc
+-dealer: Dealer
+-cardStack: Stack&lt;UNOCard&gt;
+~info = new UserInfo(): UserInfo
+--
++Game(int mode): ctor
++getPlayers(): Player[]
++getCard(): UNOCard
++removePlayedCard(UNOCard playedCard): void
++drawCard(UNOCard topCard): void
++switchTurn(): void
++drawPlus(int times): void
++whoseTurn(): void
++isOver(): boolean
++remainingCards(): int
++playedCardsSize(): int[]
+-canPlay(UNOCard topCard, UNOCard newCard): boolean
++checkUNO(): void
++setSaidUNO(): void
++isPCsTurn(): boolean
++playPC(UNOCard topCard): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>484</x>
+      <y>852</y>
+      <w>136</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>model::UNOCard
+--
+-cardColor = null: Color
+-value = null: String
+-type = 0: int
+-defaultBorder = BorderFactory.createEtchedBorder(WHEN_FOCUSED, Color.white, Color.gray): Border
+-focusedBorder = BorderFactory.createEtchedBorder(WHEN_FOCUSED, Color.black, Color.gray): Border
+-chosenColor: Color
+--
++UNOCard(): ctor
++UNOCard(Color cardColor, String value, int type): ctor
++UNOCard(Color cardColor, String cardValue): ctor
++WildCard(): void
++useWildColor(Color wildColor): void
++getWildColor(): Color
++getCardColor(): Color
++setCardColor(Color cardColor): void
++getValue(): String
++setValue(String value): void
++getType(): int
++setType(int type): void
+#paintComponent(Graphics g): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>704</x>
+      <y>1016</y>
+      <w>64</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>controller::JudgeController
+--
+-game: Game
+-session: PcSetting
+-playedCards: Stack&lt;UNOCard&gt;
++canPlay: boolean
+-mode: int
+--
++JudgeController(): ctor
+-requestMode(): int
+-modifyFirstCard(UNOCard firstCard): void
++getSession(): PcSetting
++playThisCard(UNOCard clickedCard): void
+-checkResults(): void
++isHisTurn(UNOCard clickedCard): boolean
++isValidMove(UNOCard playedCard): boolean
+-performAction(UNOCard actionCard): void
+-performWild(UNOCard functionCard): void
++requestCard(): void
++peekTopCard(): UNOCard
++submitSaidUno(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>938</y>
+      <w>60</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>controller::GameModeListener
+--
+-mainPanel: PcSetting
+-server: JudgeController
+-frame1 = new JFrame(): JFrame
+-BLACK = null: Color
+-frame = new JFrame("1V1"): JFrame
+-startGame = new JButton("Start"): JButton
+-exitGame = new JButton("Exit"): JButton
+-user1 = new JLabel("Player"): JLabel
+-user2 = new JLabel("Enemy"): JLabel
+-infoArea = new InfoPanel(): InfoPanel
+-gameState: String
+-enemyGameState: String
+-logger = Logger.getLogger("Game:"): Logger
+-ps: PcSetting
+--
++vsPc(JFrame f): void
+-init(): void
++actionPerformed(ActionEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>1024</y>
+      <w>68</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>view::InfoPanel
+--
+-error: String
+-text: String
+-panelCenter: int
+-you = 0: int
+-pc = 0: int
+-rest = 0: int
+~font1 = new Font("Calibri", Font.BOLD, 25): Font
+~font2 = new Font("Calibri", Font.PLAIN, 25): Font
+~font3 = new Font("Calibri", Font.PLAIN, 20): Font
+--
++InfoPanel(): ctor
+#paintComponent(Graphics g): void
+-printError(Graphics g): void
+-printMessage(Graphics g): void
+-printDetail(Graphics g): void
++updateText(String newText): void
++setError(String errorMgs): void
++setDetail(int[] playedCards, int remaining): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>996</y>
+      <w>58</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>view::PcPanel
+--
+-player: Player
+-name: String
+-myLayout: Box
+-cardHolder: JLayeredPane
+-controlPanel: Box
+-draw: JButton
+-sayUNO: JButton
+-nameLbl: JLabel
+-handler: MyButtonHandler
+--
++PcPanel(Player newPlayer): ctor
++setCards(): void
++getPlayer(): Player
++setPlayer(Player player): void
++setPlayerName(String playername): void
+-setControlPanel(): void
+-calculateOffset(int width, int totalCards): int
+-getPoint(int width, int totalCards): Point
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>1098</y>
+      <w>58</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>controller::UserMenuListener
+--
+~g = new GameMenu(): GameMenu
+-filePath: String
+~text = new JTextArea(): JTextArea
+~use = new UserInfo(): UserInfo
+~jf = new JFrame("Rank"): JFrame
+~p = new JPanel(): JPanel
+~font = new Font("Serif", 0, 56): Font
+~rowData = new Object[10][10]: Object[][]
+--
++begin(JFrame f): void
++range(): void
++rule(): void
+-getFilePath(): void
+-readFile(String fp): void
++actionPerformed(ActionEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>356</x>
+      <y>954</y>
+      <w>68</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>view::UserPanel
+--
+~card1 = new UNOCard(YELLOW, "U"): UNOCard
+~card2 = new UNOCard(RED, "N"): UNOCard
+~card3 = new UNOCard(BLUE, "O"): UNOCard
+~f = new JFrame("Login"): JFrame
+~label1 = new JLabel("Nickname: "): JLabel
+~label2 = new JLabel("Password: "): JLabel
+~btlogin = new JButton("Login"): JButton
+~btenroll = new JButton("Sign up"): JButton
+~text1 = new JTextField(): JTextField
+~text2 = new JPasswordField(): JPasswordField
+~font = new Font("Helvetica", Font.BOLD, 26): Font
+-handler: MyButton
+--
++UserPanel(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>846</x>
+      <y>796</y>
+      <w>76</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>model::User
+--
+-name: String
+-password: String
+-score: int
+--
++User(): ctor
++User(String name, String password, int userScore): ctor
++toString(): String
++getScore(): int
++setScore(int score): void
++getName(): String
++setName(String name): void
++getPassword(): String
++setPassword(String password): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>402</x>
+      <y>1024</y>
+      <w>74</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>view::PcSetting
+--
+-player1: PcPanel
+-player2: PcPanel
+-table: TablePanel
+-game: Game
+--
++PcSetting(Game newGame, UNOCard firstCard): ctor
+-setPlayers(): void
++refreshPanel(): void
++updatePanel(UNOCard playedCard): void
+-setBackgroundColor(UNOCard playedCard): void
+#paintComponent(Graphics g): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>608</x>
+      <y>1040</y>
+      <w>56</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>controller::MyCardListener
+--
+~sourceCard: UNOCard
+~myServer: JudgeController
+--
++setServer(JudgeController server): void
++mousePressed(MouseEvent e): void
++mouseEntered(MouseEvent e): void
++mouseExited(MouseEvent e): void
++mouseReleased(MouseEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>974</y>
+      <w>68</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>view::TablePanel
+--
+-topCard: UNOCard
+-table: JPanel
+--
++TablePanel(UNOCard firstCard): ctor
+-setTable(): void
+-setComponents(): void
++setPlayedCard(UNOCard playedCard): void
++setBackgroundColor(UNOCard playedCard): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>318</x>
+      <y>864</y>
+      <w>62</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>view::UserMenu
+--
++frame = new JFrame("Game View"): JFrame
+-btn1 = new JButton("Start"): JButton
+-btn2 = new JButton("Help"): JButton
+-btn3 = new JButton("Rank"): JButton
+-btn4 = new JButton("BGM"): JButton
+-handler: MyButton2
+--
++UserMenu(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>610</x>
+      <y>1096</y>
+      <w>82</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>controller::UserPanelListener
+--
+~x = null: String
+~y = null: String
+--
++enroll(): void
++login(JTextField text1, JPasswordField text2, JFrame f): void
+-clearText(JTextField text1, JPasswordField text2): void
++actionPerformed(ActionEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>760</y>
+      <w>66</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>model::CardCollect
+--
+-unoCards: ArrayList&lt;UNOCard&gt;
+--
++CardCollect(): ctor
++getUnoCards(): ArrayList&lt;UNOCard&gt;
+-addCard(): void
++addCardListener(MyCardListener listener): void
++getCards(): ArrayList&lt;UNOCard&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>188</x>
+      <y>974</y>
+      <w>76</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>view::GameMenu
+--
++frame = new JFrame("Game Menu"): JFrame
+-btn1 = new JButton("1 V 1 by Humen"): JButton
+-btn2 = new JButton("vs PC(No AI completed)"): JButton
+-handler: MyButton3
+--
++GameMenu(): ctor
++showGameMenu(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>708</x>
+      <y>1102</y>
+      <w>56</w>
+      <h>26</h>
+    </coordinates>
+    <panel_attributes>controller::MyButtonListener
+--
+~myServer: JudgeController
+--
++setServer(JudgeController server): void
++drawCard(): void
++sayUno(): void
++actionPerformed(ActionEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>718</y>
+      <w>54</w>
+      <h>26</h>
+    </coordinates>
+    <panel_attributes>model::Dealer
+--
+-card = new CardCollect(): CardCollect
+-CardStack: Stack&lt;UNOCard&gt;
+--
++shuffle(): Stack&lt;UNOCard&gt;
++spreadOut(Player[] players): void
++getCard(): UNOCard
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>602</x>
+      <y>800</y>
+      <w>48</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>model::Pc
+--
+--
++Pc(): ctor
++Pc(Player player): ctor
++play(UNOCard topCard): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>482</x>
+      <y>976</y>
+      <w>38</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>::Main
+--
+~user: UserPanel
+--
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>774</y>
+      <w>60</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>model::UserInfo
+--
++userList = new ArrayList(): ArrayList&lt;User&gt;
+--
++method(String conent): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>572</x>
+      <y>728</y>
+      <w>22</w>
+      <h>6</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>822</y>
+      <w>6</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>572</x>
+      <y>774</y>
+      <w>22</w>
+      <h>6</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>572</x>
+      <y>808</y>
+      <w>34</w>
+      <h>6</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>544</x>
+      <y>822</y>
+      <w>116</w>
+      <h>22</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0;560.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>732</x>
+      <y>826</y>
+      <w>42</w>
+      <h>6</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>642</x>
+      <y>728</y>
+      <w>56</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>260.0;400.0;260.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>800</y>
+      <w>30</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>130.0;40.0;130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>708</x>
+      <y>780</y>
+      <w>66</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0;310.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>828</x>
+      <y>780</y>
+      <w>54</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;250.0;10.0;250.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>824</x>
+      <y>820</y>
+      <w>26</w>
+      <h>6</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>618</x>
+      <y>906</y>
+      <w>156</w>
+      <h>6</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>760.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>788</y>
+      <w>6</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>604</x>
+      <y>742</y>
+      <w>6</w>
+      <h>22</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>422</x>
+      <y>978</y>
+      <w>64</w>
+      <h>6</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>300.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>292</x>
+      <y>744</y>
+      <w>196</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>960.0;10.0;20.0;20.0;10.0;1150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>386</x>
+      <y>794</y>
+      <w>102</w>
+      <h>164</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>490.0;10.0;10.0;10.0;10.0;800.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>332</x>
+      <y>758</y>
+      <w>156</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>760.0;10.0;10.0;10.0;10.0;530.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>214</x>
+      <y>734</y>
+      <w>274</w>
+      <h>244</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>1350.0;10.0;20.0;10.0;10.0;1200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>802</y>
+      <w>58</w>
+      <h>226</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>270.0;10.0;10.0;10.0;10.0;1110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>816</y>
+      <w>54</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;10.0;10.0;960.0;250.0;960.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>566</x>
+      <y>910</y>
+      <w>214</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>1050.0;10.0;1050.0;490.0;10.0;490.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>1006</y>
+      <w>118</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;200.0;570.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>474</x>
+      <y>1040</y>
+      <w>40</w>
+      <h>6</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>422</x>
+      <y>922</y>
+      <w>74</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>350.0;10.0;350.0;230.0;10.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>316</x>
+      <y>908</y>
+      <w>172</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>840.0;10.0;10.0;20.0;10.0;330.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>566</x>
+      <y>822</y>
+      <w>228</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0;360.0;130.0;360.0;640.0;1120.0;640.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>572</x>
+      <y>794</y>
+      <w>184</w>
+      <h>226</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;900.0;10.0;900.0;1110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>614</x>
+      <y>922</y>
+      <w>6</w>
+      <h>122</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;590.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>662</x>
+      <y>1042</y>
+      <w>46</w>
+      <h>6</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>258</x>
+      <y>1002</y>
+      <w>286</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>20.0;10.0;10.0;620.0;1410.0;620.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>722</x>
+      <y>1082</y>
+      <w>6</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>710</x>
+      <y>890</y>
+      <w>6</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;630.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>618</x>
+      <y>914</y>
+      <w>126</w>
+      <h>106</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>610.0;510.0;610.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>28</x>
+      <y>84</y>
+      <w>156</w>
+      <h>6</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>760.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
