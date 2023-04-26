@@ -1,0 +1,43 @@
+﻿I. Introduction of cards
+UNO cards are divided into three types of cards: ordinary cards (76 cards), function cards (24 cards), and universal cards (8 cards). The total number of cards is 108.
+
+- Ordinary cards: Ordinary cards, also called number cards, consist of 4 colors: red, yellow, blue and green, and each color has
+There are 19 cards of each color: two cards of each color from 1 to 9, and only one card of each color from 0.
+
+- Function cards: Function cards also consist of 4 colors: red, yellow, blue and green, and have special effects when played.
+There are 24 function cards (8 of each). They are divided into 3 types: "Skip", "Reverse" and "+2 (Draw 2)".
+
+Skip	
+When you play a "Skip" card, your next player will stop playing and draw a card, and it will be your next player's turn to play (i.e. skip the next player).
+
+Reverse
+When a "flip" card is played, the entire order of play is flipped, such as counterclockwise to clockwise.
+
++2(Draw 2)
+After "+2" is played, the next player will be penalized by drawing 2 cards and cannot play any more cards.
+
+- The card is also called black card and trump card, and it has no color.
+There are 8 cards in total (4 of each). There are two types of cards, "Wild" and "+4 (Draw 4)".
+
+Wild
+When you play a "wild" card, you can specify the color of the next player's card, regardless of the color of the previous card.
+
++4(Draw 4)
+When "+4" is played, you can specify the color of the next player's card, and the next player must draw 4 cards from the pile, and cannot play any more cards.
+
+
+II. How to play the game
+Each player is dealt 7 cards, and the rest is treated as a bank of cards, then the first card is taken from the pile and played according to this card.
+
+The latest card on the discard pile is the reference card, and the player must play the same color or number as the reference card.
+The function card must be the same color or function as the reference card, and the universal card can be used at any time. When you do not have the same color or number or function as the reference card
+When you don't have a card of the same color or number or the same function or a card with the same function, you are considered to be unable to play (conversely, it is called a playable state), and you have to draw a card from the
+If the card you have drawn is a playable card, you may play it and end the turn.
+
+When you have the last normal card left in your hand, you must call out "UNO", otherwise you must draw a card from the pile.
+
+When there is only one last function card or a universal card left in your hand, you do not need to call out UNO and automatically draw a card from the pile.
+
+The first player to finish playing the cards in his hand wins.
+
+Translated with www.DeepL.com/Translator (free version)
