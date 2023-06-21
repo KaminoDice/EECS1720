@@ -111,7 +111,7 @@ public class Tweeter extends JFrame {
 
 
 	public static void main(String[] args) {
-		
+		 
 		Tweeter frame = new Tweeter("Tweet Me!");
 
 	}
